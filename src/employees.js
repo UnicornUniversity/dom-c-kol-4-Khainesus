@@ -119,6 +119,11 @@ export function validateInput(dtoIn) {
   }
 }
 
+/**
+ * Calculates the median value from an array of numbers
+ * @param {Array} arr - array of numbers
+ * @returns {number} median value of the array
+ */
 export function calculateMedian(arr) {
   const sorted = [...arr].sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
@@ -129,7 +134,12 @@ export function calculateMedian(arr) {
     return (sorted[mid - 1] + sorted[mid]) / 2; // sudý počet
   }
 }
-  
+
+/**
+ * Calculates age from birthdate as a decimal number
+ * @param {string} birthdate - employee birthdate in ISO format
+ * @returns {number} age as a decimal number
+ */  
 export function calculateAge(birthdate) {
   const today = new Date();
   const birth = new Date(birthdate);
