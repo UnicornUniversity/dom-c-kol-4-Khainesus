@@ -32,9 +32,9 @@ export function getEmployeeStatistics(employees) {
   const workload40 = employees.filter(emp => emp.workload === 40).length;
   const ages = employees.map(emp => calculateAge(emp.birthdate));
   const averageAge = Math.round(ages.reduce((sum, age) => sum + age, 0) / ages.length * 10) / 10;
-  const minAge = Math.round(Math.min(...ages));
-  const maxAge = Math.round(Math.max(...ages));
-  const medianAge = Math.round(calculateMedian(ages));
+  const minAge = Math.floor(Math.min(...ages));
+  const maxAge = Math.floor(Math.max(...ages));
+  const medianAge = Math.floor(calculateMedian(ages));
   const workloads = employees.map(emp => emp.workload);
   const medianWorkload = Math.round(calculateMedian(workloads));
   const women = employees.filter(emp => emp.gender === "female");
