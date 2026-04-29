@@ -180,4 +180,27 @@ export function getEmployeeStatistics(employees) {
   const maxAge = Math.round(Math.max(...ages));
 
   const medianAge = Math.round(calculateMedian(ages));
+
+  const workloads = employees.map(emp => emp.workload);
+  const medianWorkload = Math.round(calculateMedian(workloads));
+
+  const women = employees.filter(emp => emp.gender === "female");
+  const averageWomenWorkload = Math.round(women.reduce((sum, emp) => sum + emp.workload, 0) / women.length * 10) / 10;
+  
+  const sortedByWorkload = [...employees].sort((a, b) => a.workload - b.workload);
+
+  return {
+    total,
+    workload10,
+    workload20,
+    workload30,
+    workload40,
+    averageAge,
+    minAge,
+    maxAge,
+    medianAge,
+    medianWorkload,
+    averageWomenWorkload,
+    sortedByWorkload,
+  };
 }
