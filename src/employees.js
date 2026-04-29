@@ -146,7 +146,7 @@ export function generateEmployeeData(dtoIn) {
     return employees;
 }
 
-function calculateMedian(arr) {
+export function calculateMedian(arr) {
   const sorted = [...arr].sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
   
@@ -157,7 +157,7 @@ function calculateMedian(arr) {
   }
 }
   
-function calculateAge(birthdate) {
+export function calculateAge(birthdate) {
   const today = new Date();
   const birth = new Date(birthdate);
   const ageInMs = today - birth; // rozdíl v milisekundách
