@@ -142,6 +142,7 @@ export function generateEmployeeData(dtoIn) {
       birthdate: birthdate,
       workload: workload,
     });
+  }
     return employees;
 }
 
