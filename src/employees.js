@@ -125,12 +125,17 @@ export function validateInput(dtoIn) {
  * @returns {number} median value of the array
  */
 export function calculateMedian(arr) {
+  // creates a sorted copy of the array in ascending order
   const sorted = [...arr].sort((a, b) => a - b);
+  // calculates the index of the middle element
   const mid = Math.floor(sorted.length / 2);
-  
+
+  // checks if the array has an odd number of elements
   if (sorted.length % 2 !== 0) {
-    return sorted[mid]; // lichý počet
+    // returns the middle element directly
+    return sorted[mid]; 
   } else {
+    // returns the average of the two middle elements
     return (sorted[mid - 1] + sorted[mid]) / 2; // sudý počet
   }
 }
@@ -141,9 +146,14 @@ export function calculateMedian(arr) {
  * @returns {number} age as a decimal number
  */  
 export function calculateAge(birthdate) {
+  // gets the current date
   const today = new Date();
+  // converts birthdate string to Date object
   const birth = new Date(birthdate);
-  const ageInMs = today - birth; // rozdíl v milisekundách
-  const msPerYear = 1000 * 60 * 60 * 24 * 365.25; // milisekund za rok
-  return ageInMs / msPerYear; // věk jako desetinné číslo
+  // calculates the difference between today and birthdate in milliseconds
+  const ageInMs = today - birth; 
+  // number of milliseconds in a year including leap years
+  const msPerYear = 1000 * 60 * 60 * 24 * 365.25;
+  // returns age in years as a decimal number
+  return ageInMs / msPerYear; 
 }
