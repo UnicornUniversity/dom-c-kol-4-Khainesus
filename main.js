@@ -1,28 +1,44 @@
 import { generateGender, generateName, generateSurname, generateWorkload, generateBirthdate, validateInput, calculateMedian, calculateAge } from "./src/employees.js";
 
 /**
- * Generates a list of employees based on input data
- * @param {object} dtoIn - input data
- * @returns {Array} list of employees
+ * Generates a list of employees with random data.
+ * @param {object} dtoIn - contains count of employees and age limit of employees
+ * @param {number} dtoIn.count - number of employees to generate
+ * @param {object} dtoIn.age - age range for employees
+ * @param {number} dtoIn.age.min - minimum age of employees
+ * @param {number} dtoIn.age.max - maximum age of employees
+ * @returns {Array} list of generated employees
  */
 export function generateEmployeeData(dtoIn) {
+  // Calling the input validation function
   validateInput(dtoIn);
+  // Empty array to store generated employees
   const employees = [];
+  // Loop runs once for each employee that needs to be generated
   for (let i = 0; i < dtoIn.count; i++) {
+    // Generate random gender
     const gender = generateGender();
+    // Generate name and surname based on gender
     const name = generateName(gender);
     const surname = generateSurname(gender);
+    // Generate random workload
     const workload = generateWorkload();
+    // Generate random birthdate within the given age range
     const birthdate = generateBirthdate(dtoIn.age.min, dtoIn.age.max);
+    // Create employee object and add it to the array
     employees.push({ gender, name, surname, birthdate, workload });
   }
+  // Return the complete list of employees
   return employees;
 }
 
 /**
- * Calculates statistics from a list of employees
- * @param {Array} employees - list of employees
- * @returns {object} statistics
+ * Calculates statistics from a list of employees.
+ * @param {Array} employees - list of employees to calculate statistics from
+ * @param {string} employees[].gender - gender of the employee (male/female)
+ * @param {string} employees[].birthdate - employee birthdate in ISO Date-Time format
+ * @param {number} employees[].workload - employee workload in hours per week (10/20/30/40)
+ * @returns {object} object containing employee statistics
  */
 export function getEmployeeStatistics(employees) {
   const total = employees.length;
