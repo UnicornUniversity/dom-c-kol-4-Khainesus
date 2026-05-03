@@ -72,17 +72,15 @@ export function generateWorkload() {
  * @returns {string} birthdate in ISO format
  */
 export function generateBirthdate(ageMin, ageMax) {
+  // gets the current date
   const today = new Date();
-  
   // Calculate the oldest and youngest allowed birthdates
   const oldestDate = new Date(today.getFullYear() - ageMax, today.getMonth(), today.getDate());
   const youngestDate = new Date(today.getFullYear() - ageMin, today.getMonth(), today.getDate());
-  
   // Convert dates to timestamps and pick a random value between them
   const oldestTimestamp = oldestDate.getTime();
   const youngestTimestamp = youngestDate.getTime();
   const randomTimestamp = oldestTimestamp + Math.random() * (youngestTimestamp - oldestTimestamp);
-  
   // Convert the random timestamp back to ISO format
   return new Date(randomTimestamp).toISOString();
 }
@@ -129,7 +127,7 @@ export function calculateMedian(arr) {
   const sorted = [...arr].sort((a, b) => a - b);
   // calculates the index of the middle element
   const mid = Math.floor(sorted.length / 2);
-
+  
   // checks if the array has an odd number of elements
   if (sorted.length % 2 !== 0) {
     // returns the middle element directly
